@@ -1,48 +1,5 @@
-
-" An example for a vimrc file.
-"
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2019 Dec 17
-"
-" To use it, copy it to
-"	       for Unix:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"	 for MS-Windows:  $VIM\_vimrc
-"	      for Haiku:  ~/config/settings/vim/vimrc
-"	    for OpenVMS:  sys$login:.vimrc
-
-" When started as "evim", evim.vim will already have done these settings, bail
-" out.
-if v:progname =~? "evim"
-  finish
-endif
-
-" Get the defaults that most users want.
-source $VIMRUNTIME/defaults.vim
-
-if &t_Co > 2 || has("gui_running")
-  " Switch on highlighting the last used search pattern.
-  set hlsearch
-endif
-
-" Put these in an autocmd group, so that we can delete them easily.
-augroup vimrcEx
-  au!
-
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-augroup END
-
-" Add optional packages.
-"
-" The matchit plugin makes the % command work better, but it is not backwards
-" compatible.
-" The ! means the package won't be loaded right away but when plugins are
-" loaded during initialization.
-if has('syntax') && has('eval')
-  packadd! matchit
-endif
-packloadall
+set nocompatible " be iMproved, required
+filetype off     " required
 
 call plug#begin()
 " The default plugin directory will be as follows:
@@ -59,12 +16,104 @@ Plug 'leafgarland/typescript-vim' " TypeScript syntax
 Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jparise/vim-graphql'        " GraphQL syntax
+Plug 'airblade/vim-gitgutter'     " Show git diff of lines edited
+Plug 'tpope/vim-fugitive'         " :Gblame
+Plug 'tpope/vim-rhubarb'          " :GBrowse
+
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
-" You can revert the settings after the call like so:
-let g:coc_global_extensions = ['coc-tsserver']
+filetype plugin indent on    " required
+
+syntax enable
+set background=dark
+set wildmenu " when opening a file with e.g. :e ~/.vim<TAB> there is a graphical menu of all the matches
+set ttyfast
+set lazyredraw
+set updatetime=300
+set hidden " Open other files if current one is not saved
+
+" Enable Mouse mode in all modes
+set mouse=a
+
+" Numbers
 set number
-set re=0
-syntax on
+set numberwidth=4
+set ruler
+
+" paste mode
+nnoremap <F5> :set invpaste paste?<CR>
+set pastetoggle=<F5>
+set showmode
+
+" Treat long lines as break lines
+map j gj
+map k gk
+
+" Indentation
+set autoindent
+set cindent
+set smartindent
+
+" Folding
+" Enable folding
+set foldmethod=syntax
+set foldlevel=99
+
+" Enable folding with the z key
+nmap z za
+
+" Disable all bells and whistles
+set noerrorbells visualbell t_vb=
+
+" Tab Options
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2 " Number of spaces a tab counts when editing
+set expandtab
+" Set default encoding to utf-8
+set encoding=utf-8
+set termencoding=utf-8
+
+" Disable backups and swap files
+set nobackup
+set nowritebackup
+set noswapfile
+
+set ignorecase " Ignore case when searching
+set smartcase  " When searching try to be smart about cases
+set nohlsearch " Don't highlight search term
+set incsearch  " Jumping search
+
+" Always show the status line
+set laststatus=2
+
+" Allow copy and paste from system clipboard
+set clipboard=unnamed
+
+let g:coc_global_extensions = ['coc-solargraph', 'coc-tsserver', 'coc-json']
+
+
+" Add CoC Prettier if prettier is installed
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  let g:coc_global_extensions += ['coc-prettier']
+endif
+
+" Add CoC ESLint if ESLint is installed
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>c  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Format
+nmap <leader>f   :CocCommand prettier.formatFile<CR>
 
