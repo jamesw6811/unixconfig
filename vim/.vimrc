@@ -91,7 +91,7 @@ set laststatus=2
 " Allow copy and paste from system clipboard
 set clipboard=unnamed
 
-let g:coc_global_extensions = ['coc-solargraph', 'coc-tsserver', 'coc-json']
+let g:coc_global_extensions = ['coc-eslint', 'coc-solargraph', 'coc-tsserver', 'coc-json']
 
 
 " Add CoC Prettier if prettier is installed
@@ -114,6 +114,8 @@ nmap <leader>c  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
+" Accept suggestions with enter
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 " Format
-nmap <leader>f   :CocCommand prettier.formatFile<CR>
+nmap <leader>f   :Prettier<CR>
 
