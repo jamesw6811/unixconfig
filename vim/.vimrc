@@ -1,5 +1,10 @@
 set nocompatible " be iMproved, required
 filetype off     " required
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
 call plug#begin()
 " The default plugin directory will be as follows:
@@ -91,7 +96,7 @@ set laststatus=2
 " Allow copy and paste from system clipboard
 set clipboard=unnamed
 
-let g:coc_global_extensions = ['coc-eslint', 'coc-solargraph', 'coc-tsserver', 'coc-json']
+let g:coc_global_extensions = ['coc-eslint', 'coc-solargraph', 'coc-tsserver', 'coc-json', 'coc-html', 'coc-css', 'coc-pyright']
 
 
 " Add CoC Prettier if prettier is installed
