@@ -10,6 +10,8 @@
 
 `stow *`
 
+or use `setup.sh`
+
 
 inspiration:
 https://htoopyaelwin.medium.com/organizing-your-dotfiles-e059090a4bf5
