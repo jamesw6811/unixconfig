@@ -3,6 +3,7 @@ stow *
 brew install nodejs
 brew install tree
 brew install pyenv
+brew install tmux
 pyenv install 3
 
 brew install zsh
