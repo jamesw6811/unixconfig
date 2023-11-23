@@ -1,5 +1,6 @@
 brew install stow
 stow *
+brew install prettier
 brew install nodejs
 brew install tree
 brew install pyenv

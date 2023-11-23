@@ -16,14 +16,8 @@ call plug#begin()
 "   - Avoid using standard Vim directory names like 'plugin'
 
 " Make sure you use single quotes
-Plug 'pangloss/vim-javascript'    " JavaScript support
-Plug 'leafgarland/typescript-vim' " TypeScript syntax
-Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'jparise/vim-graphql'        " GraphQL syntax
 Plug 'airblade/vim-gitgutter'     " Show git diff of lines edited
-Plug 'tpope/vim-fugitive'         " :Gblame
-Plug 'tpope/vim-rhubarb'          " :GBrowse
 
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
@@ -96,18 +90,7 @@ set laststatus=2
 " Allow copy and paste from system clipboard
 set clipboard=unnamed
 
-let g:coc_global_extensions = ['coc-eslint', 'coc-solargraph', 'coc-tsserver', 'coc-json', 'coc-html', 'coc-css', 'coc-pyright']
-
-
-" Add CoC Prettier if prettier is installed
-if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
-  let g:coc_global_extensions += ['coc-prettier']
-endif
-
-" Add CoC ESLint if ESLint is installed
-if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
-  let g:coc_global_extensions += ['coc-eslint']
-endif
+let g:coc_global_extensions = ['coc-eslint', 'coc-solargraph', 'coc-tsserver', 'coc-json', 'coc-html', 'coc-css', 'coc-pyright', 'coc-prettier', 'coc-eslint']
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -122,5 +105,6 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 " Accept suggestions with enter
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 " Format
-nmap <leader>f   :Prettier<CR>
+command! -nargs=0 Format :call CocActionAsync('format')
+nmap <leader>f   :Format <CR>
 
