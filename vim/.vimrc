@@ -18,6 +18,7 @@ call plug#begin()
 " Make sure you use single quotes
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'airblade/vim-gitgutter'     " Show git diff of lines edited
+Plug 'NoahTheDuke/vim-just'
 
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
@@ -107,4 +108,4 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 " Format
 command! -nargs=0 Format :call CocActionAsync('format')
 nmap <leader>f   :Format <CR>
-
+nmap <leader>rn <Plug>(coc-rename)
