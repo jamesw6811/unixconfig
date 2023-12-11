@@ -5,6 +5,9 @@ brew install nodejs
 brew install tree
 brew install pyenv
 brew install tmux
+brew install lazygit
+brew install antidote
+pip install shell-gpt
 pyenv install 3
 
 brew install zsh
