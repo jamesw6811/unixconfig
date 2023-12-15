@@ -17,15 +17,14 @@ call plug#begin()
 
 " Make sure you use single quotes
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'airblade/vim-gitgutter'     " Show git diff of lines edited
 Plug 'NoahTheDuke/vim-just'
 
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
+set regexpengine=0
 filetype plugin indent on    " required
 
-syntax enable
 set background=dark
 set wildmenu " when opening a file with e.g. :e ~/.vim<TAB> there is a graphical menu of all the matches
 set ttyfast
