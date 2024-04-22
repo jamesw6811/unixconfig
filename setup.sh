@@ -7,6 +7,7 @@ brew install pyenv
 brew install tmux
 brew install lazygit
 brew install antidote
+brew install fzf
 pip install shell-gpt
 pyenv install 3
 
