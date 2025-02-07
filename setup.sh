@@ -1,5 +1,5 @@
 brew install stow
-stow *
+stow -t ~ */
 brew install prettier
 brew install nodejs
 brew install tree
