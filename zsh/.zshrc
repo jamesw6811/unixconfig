@@ -72,7 +72,7 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode brew)
+plugins=(git vi-mode brew poetry)
 
 source $ZSH/oh-my-zsh.sh
 # User configuration
@@ -103,6 +103,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Created by `pipx` on 2023-11-14 03:32:11
 export PATH="$PATH:/Users/jamiewhite/.local/bin"
+export EDITOR="vim"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
