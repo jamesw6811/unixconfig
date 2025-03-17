@@ -3,7 +3,19 @@ export PATH=~/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
 test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 test -d /opt/homebrew && eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Set the PYENV_ROOT variable to point to the location of Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+
+# Check if pyenv command is available, if not, add Pyenv binary directory to PATH
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+
+# Initialize pyenv into the shell session
 eval "$(pyenv init -)"
+
+# Initialize pyenv-virtualenv plugin into the shell session
+eval "$(pyenv virtualenv-init -)"
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 # Set name of the theme to load --- if set to "random", it will

@@ -21,6 +21,7 @@ Plug 'NoahTheDuke/vim-just'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
+Plug 'augmentcode/augment.vim'
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
@@ -91,6 +92,9 @@ set laststatus=2
 
 " Allow copy and paste from system clipboard
 set clipboard=unnamed
+
+" Augment code workspace folders
+let g:augment_workspace_folders = ['~/git/mmo-infinite']
 
 let g:coc_global_extensions = ['coc-eslint', 'coc-solargraph', 'coc-tsserver', 'coc-json', 'coc-html', 'coc-css', 'coc-pyright', 'coc-prettier', 'coc-eslint']
 
