@@ -8,7 +8,7 @@
 
 `cd [this repo]`
 
-`stow *`
+`stow -t ~ */`
 
 or use `setup.sh`
 
