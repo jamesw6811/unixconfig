@@ -5,7 +5,7 @@ brew install nodejs
 brew install tree
 brew install tmux
 brew install lazygit
-brew install antidote
+curl -L git.io/antigen > ~/antigen.zsh
 brew install fzf
 pip install shell-gpt
 curl -fsSL https://pyenv.run | bash
