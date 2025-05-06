@@ -32,6 +32,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle "MichaelAquilina/zsh-you-should-use"
+antigen bundle Aloxaf/fzf-tab
 
 # Load the theme
 antigen theme romkatv/powerlevel10k
