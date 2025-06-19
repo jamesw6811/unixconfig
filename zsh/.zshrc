@@ -33,7 +33,7 @@ antigen theme romkatv/powerlevel10k
 # Tell antigen that you're done
 antigen apply
 
-
+bindkey '\t\t' autosuggest-accept
 
 export PATH="$PATH:/Users/jamiewhite/.local/bin"
 export EDITOR="vim"
