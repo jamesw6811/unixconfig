@@ -22,6 +22,7 @@ Plug 'NoahTheDuke/vim-just'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
+Plug 'plasticboy/vim-markdown'
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
@@ -93,7 +94,26 @@ set laststatus=2
 " Allow copy and paste from system clipboard
 set clipboard=unnamed
 
-let g:coc_global_extensions = ['coc-eslint', 'coc-solargraph', 'coc-tsserver', 'coc-json', 'coc-html', 'coc-css', 'coc-pyright', 'coc-prettier', 'coc-eslint']
+let g:coc_global_extensions = ['coc-eslint', 'coc-solargraph', 'coc-tsserver', 'coc-json', 'coc-html', 'coc-css', 'coc-pyright', 'coc-prettier']
+
+" Ensure CoC works for all file types - disable the default disabled filetypes
+let g:coc_filetypes_enable = ['*']
+" Override any filetype restrictions
+autocmd FileType * let b:coc_enabled = 1
+
+" Common filetype mappings to ensure language servers work properly
+let g:coc_filetype_map = {
+  \ 'yaml.docker-compose': 'yaml',
+  \ 'yaml.ansible': 'yaml',
+  \ 'javascript.jsx': 'javascriptreact',
+  \ 'typescript.jsx': 'typescriptreact',
+  \ 'markdown.mdx': 'markdown',
+  \ 'html.handlebars': 'html',
+  \ 'html.mustache': 'html',
+  \ 'css.scss': 'scss',
+  \ 'css.sass': 'sass',
+  \ 'css.less': 'less'
+  \ }
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
@@ -110,10 +130,28 @@ nmap <leader>c  <Plug>(coc-codeaction)
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
-" Trigger Claude completion with Ctrl+F
-inoremap <silent><expr> <c-f> coc#refresh()
+
+" Claude AI keybindings
+" Trigger suggestion (works in both normal and insert mode)
+nnoremap <silent> <C-S-c> :CocCommand claude.suggest<CR>
+inoremap <silent> <C-S-c> <Esc>:CocCommand claude.suggest<CR>
+
+" Force CoC completion to work in all filetypes including markdown
+autocmd FileType markdown,text let b:coc_suggest_disable = 0
+autocmd FileType markdown,text let b:coc_enabled = 1
+" Enable word-based completion for markdown and text files
+autocmd FileType markdown,text setlocal complete+=k
 
 " Format
 command! -nargs=0 Format :call CocActionAsync('format')
 nmap <leader>f   :Format <CR>
 nmap <leader>rn <Plug>(coc-rename)
+
+" Markdown settings
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 2
+let g:vim_markdown_conceal_code_blocks = 0
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_strikethrough = 1
+set conceallevel=2

@@ -47,3 +47,6 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Load Claude API key from private config
+[ -f ~/.claude_env ] && source ~/.claude_env
