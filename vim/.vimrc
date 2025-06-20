@@ -92,9 +92,6 @@ set laststatus=2
 " Allow copy and paste from system clipboard
 set clipboard=unnamed
 
-" Augment code workspace folders
-let g:augment_workspace_folders = ['~/git/mmo-infinite']
-
 let g:coc_global_extensions = ['coc-eslint', 'coc-solargraph', 'coc-tsserver', 'coc-json', 'coc-html', 'coc-css', 'coc-pyright', 'coc-prettier', 'coc-eslint']
 
 if executable('ag')
@@ -111,8 +108,10 @@ nmap <leader>c  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
-" Accept suggestions with enter
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+" Trigger Claude completion with Ctrl+F
+inoremap <silent><expr> <c-f> coc#refresh()
+
 " Format
 command! -nargs=0 Format :call CocActionAsync('format')
 nmap <leader>f   :Format <CR>
