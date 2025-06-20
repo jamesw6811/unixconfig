@@ -17,6 +17,7 @@ call plug#begin()
 
 " Make sure you use single quotes
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug '/home/jamesw/git/coc-vim-claude-complete', {'do': 'npm install && npm run build'}
 Plug 'NoahTheDuke/vim-just'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
