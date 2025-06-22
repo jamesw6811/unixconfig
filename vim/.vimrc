@@ -186,3 +186,22 @@ nnoremap <leader>gb :Git blame<CR>
 nnoremap <leader>gl :Git log --oneline<CR>
 nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gP :Git pull<CR>
+
+" FZF key mappings - file search
+nnoremap <leader>sf :Files<CR>
+nnoremap <leader>sg :GFiles<CR>
+nnoremap <leader>sb :Buffers<CR>
+nnoremap <leader>sr :Rg<CR>
+nnoremap <leader>sl :Lines<CR>
+nnoremap <leader>sL :BLines<CR>
+nnoremap <leader>sh :History<CR>
+nnoremap <leader>sc :Commands<CR>
+nnoremap <leader>sm :Marks<CR>
+nnoremap <leader>sw :Windows<CR>
+
+" CoC completion colors - muted and italic
+highlight! CocFloating ctermfg=245 guifg=#8a8a8a cterm=italic gui=italic
+highlight! CocMenuSel ctermfg=245 ctermbg=238 guifg=#8a8a8a guibg=#444444 cterm=italic gui=italic
+highlight! CocSearch ctermfg=245 guifg=#8a8a8a cterm=italic gui=italic
+highlight! CocInlayHint ctermfg=242 guifg=#6c6c6c cterm=italic gui=italic
+highlight! CocSemHighlightDefault ctermfg=245 guifg=#8a8a8a cterm=italic gui=italic
