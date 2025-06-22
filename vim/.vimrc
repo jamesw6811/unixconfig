@@ -23,6 +23,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 Plug 'plasticboy/vim-markdown'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'liuchengxu/vim-which-key'
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
@@ -94,7 +97,7 @@ set laststatus=2
 " Allow copy and paste from system clipboard
 set clipboard=unnamed
 
-let g:coc_global_extensions = ['coc-eslint', 'coc-solargraph', 'coc-tsserver', 'coc-json', 'coc-html', 'coc-css', 'coc-pyright', 'coc-prettier']
+let g:coc_global_extensions = ['coc-eslint', 'coc-solargraph', 'coc-tsserver', 'coc-json', 'coc-html', 'coc-css', 'coc-pyright', 'coc-prettier', 'coc-metals', 'coc-rust-analyzer']
 
 " Ensure CoC works for all file types - disable the default disabled filetypes
 let g:coc_filetypes_enable = ['*']
@@ -123,6 +126,8 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+nnoremap <silent> <leader> :WhichKey '\'<CR>
 
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>c  <Plug>(coc-codeaction)
@@ -155,3 +160,29 @@ let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_strikethrough = 1
 set conceallevel=2
+
+" Git configuration
+set signcolumn=yes
+
+" GitGutter settings - shows git diff in sign column
+let g:gitgutter_enabled = 1
+let g:gitgutter_max_signs = 500
+let g:gitgutter_map_keys = 0
+let g:gitgutter_override_sign_column_highlight = 1
+let g:gitgutter_preview_win_floating = 1
+
+" GitGutter key mappings
+nmap <leader>hp <Plug>(gitgutter-preview-hunk)
+nmap <leader>hs <Plug>(gitgutter-stage-hunk)
+nmap <leader>hu <Plug>(gitgutter-undo-hunk)
+nmap ]c <Plug>(gitgutter-next-hunk)
+nmap [c <Plug>(gitgutter-prev-hunk)
+
+" Fugitive key mappings - comprehensive git integration
+nnoremap <leader>gs :Git<CR>
+nnoremap <leader>gd :Gvdiffsplit<CR>
+nnoremap <leader>gc :Git commit<CR>
+nnoremap <leader>gb :Git blame<CR>
+nnoremap <leader>gl :Git log --oneline<CR>
+nnoremap <leader>gp :Git push<CR>
+nnoremap <leader>gP :Git pull<CR>
