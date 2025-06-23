@@ -52,25 +52,10 @@ nnoremap <F5> :set invpaste paste?<CR>
 set pastetoggle=<F5>
 set showmode
 
-" Treat long lines as break lines
-map j gj
-map k gk
-
 " Indentation
 set autoindent
 set cindent
 set smartindent
-
-" Folding
-" Enable folding
-set foldmethod=syntax
-set foldlevel=99
-
-" Enable folding with the z key
-nmap z za
-
-" Disable all bells and whistles
-set noerrorbells visualbell t_vb=
 
 " Tab Options
 set shiftwidth=2
@@ -80,11 +65,6 @@ set expandtab
 " Set default encoding to utf-8
 set encoding=utf-8
 set termencoding=utf-8
-
-" Disable backups and swap files
-set nobackup
-set nowritebackup
-set noswapfile
 
 set ignorecase " Ignore case when searching
 set smartcase  " When searching try to be smart about cases
@@ -141,6 +121,9 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 nnoremap <silent> <C-S-c> :CocCommand claude.suggest<CR>
 inoremap <silent> <C-S-c> <Esc>:CocCommand claude.suggest<CR>
 
+" Trigger custom prompt suggestion
+nnoremap <silent> <leader>p :CocCommand claude.prompt<CR>
+
 " Force CoC completion to work in all filetypes including markdown
 autocmd FileType markdown,text let b:coc_suggest_disable = 0
 autocmd FileType markdown,text let b:coc_enabled = 1
@@ -151,15 +134,6 @@ autocmd FileType markdown,text setlocal complete+=k
 command! -nargs=0 Format :call CocActionAsync('format')
 nmap <leader>f   :Format <CR>
 nmap <leader>rn <Plug>(coc-rename)
-
-" Markdown settings
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_conceal = 2
-let g:vim_markdown_conceal_code_blocks = 0
-let g:vim_markdown_math = 1
-let g:vim_markdown_frontmatter = 1
-let g:vim_markdown_strikethrough = 1
-set conceallevel=2
 
 " Git configuration
 set signcolumn=yes
