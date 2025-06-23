@@ -179,3 +179,7 @@ highlight! CocMenuSel ctermfg=245 ctermbg=238 guifg=#8a8a8a guibg=#444444 cterm=
 highlight! CocSearch ctermfg=245 guifg=#8a8a8a cterm=italic gui=italic
 highlight! CocInlayHint ctermfg=242 guifg=#6c6c6c cterm=italic gui=italic
 highlight! CocSemHighlightDefault ctermfg=245 guifg=#8a8a8a cterm=italic gui=italic
+
+" Fold settings - start with all folds open
+set foldlevelstart=99
+set foldlevel=99
