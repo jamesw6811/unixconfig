@@ -7,6 +7,7 @@ brew install tmux
 brew install lazygit
 curl -L git.io/antigen > ~/antigen.zsh
 brew install fzf
+brew install fd
 brew install ripgrep
 pip install shell-gpt
 curl -fsSL https://pyenv.run | bash

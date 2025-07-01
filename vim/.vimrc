@@ -24,6 +24,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
 Plug 'liuchengxu/vim-which-key'
 " Initialize plugin system
@@ -160,6 +161,10 @@ nnoremap <leader>gb :Git blame<CR>
 nnoremap <leader>gl :Git log --oneline<CR>
 nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gP :Git pull<CR>
+nnoremap <leader>gr :Gread<CR>
+nnoremap <leader>gw :Gwrite<CR>
+nnoremap <leader>ge :Gedit<CR>
+nnoremap <leader>gB :GBrowse<CR>
 
 " FZF key mappings - file search
 nnoremap <leader>sf :Files<CR>

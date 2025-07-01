@@ -50,3 +50,9 @@ fi
 
 # Load Claude API key from private config
 [ -f ~/.claude_env ] && source ~/.claude_env
+
+# cdf - Change Directory using FZF and fd
+cdf() {
+    local dir
+    dir=$(fd --type d --hidden --exclude .git . "${1:-.}" 2> /dev/null | fzf +m --preview 'ls -la {}') && cd "$dir"
+}
