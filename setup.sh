@@ -13,6 +13,7 @@ curl -L git.io/antigen > ~/antigen.zsh
 brew install fzf
 brew install fd
 brew install ripgrep
+brew install llama.cpp
 pip install shell-gpt
 curl -fsSL https://pyenv.run | bash
 pyenv install 3
