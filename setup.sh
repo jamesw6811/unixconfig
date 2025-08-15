@@ -4,6 +4,10 @@ brew install prettier
 brew install nodejs
 brew install tree
 brew install tmux
+# Install tmux plugins
+mkdir -p ~/.config/tmux/plugins
+git clone https://github.com/catppuccin/tmux ~/.config/tmux/plugins/catppuccin
+git clone https://github.com/tmux-plugins/tmux-battery ~/.config/tmux/plugins/tmux-battery
 brew install lazygit
 curl -L git.io/antigen > ~/antigen.zsh
 brew install fzf
