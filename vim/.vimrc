@@ -17,7 +17,7 @@ call plug#begin()
 
 " Make sure you use single quotes
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug '/home/jamesw/git/coc-vim-claude-complete', {'do': 'npm install && npm run build'}
+Plug 'ggml-org/llama.vim'
 Plug 'NoahTheDuke/vim-just'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -188,3 +188,12 @@ highlight! CocSemHighlightDefault ctermfg=245 guifg=#8a8a8a cterm=italic gui=ita
 " Fold settings - start with all folds open
 set foldlevelstart=99
 set foldlevel=99
+
+" Start llama server when vim opens if not already running
+function! StartLlamaServer()
+    if !system('pgrep -f "llama-server"')
+        silent execute '!llama-server --fim-qwen-7b-default > /dev/null 2>&1 &'
+    endif
+endfunction
+
+autocmd VimEnter * call StartLlamaServer()
