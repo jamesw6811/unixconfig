@@ -1,0 +1,2 @@
+-- Plugin-specific keymaps are defined in their respective plugin specs
+-- (telescope, git, lsp, gitsigns, codecompanion, etc.)

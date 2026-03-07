@@ -14,6 +14,10 @@ brew install fzf
 brew install fd
 brew install ripgrep
 brew install llama.cpp
+brew install neovim
+brew install ollama
+brew services start ollama
+ollama pull qwen2.5-coder:7b
 
 brew install zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --keep-zshrc

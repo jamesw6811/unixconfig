@@ -114,6 +114,12 @@ nnoremap <silent> <leader> :WhichKey '\'<CR>
 nmap <leader>c  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
+" Open diagnostics list for entire file
+nmap <leader>cd :CocDiagnostics<CR>
+" Apply code actions to entire file
+nmap <leader>ca  <Plug>(coc-codeaction-source)
+" Show all available fixes in quickfix window
+nmap <leader>cf :CocList quickfix<CR>
 
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 

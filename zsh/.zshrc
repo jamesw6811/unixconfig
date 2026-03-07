@@ -56,3 +56,5 @@ cdf() {
     local dir
     dir=$(fd --type d --hidden --exclude .git . "${1:-.}" 2> /dev/null | fzf +m --preview 'ls -la {}') && cd "$dir"
 }
+
+alias vim=nvim
